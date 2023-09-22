@@ -8,11 +8,16 @@ pipeline {
                 git url:"https://github.com/LondheShubham153/django-notes-app.git", branch: "main"
             }
         }
-        stage("Build process"){
-            steps {
-                echo "Deploying the container"
-                sh "docker-compose down && docker-compose up -d"
-                
+        stage("This is to build the code"){
+            steps{
+                sh 'mvn compile'
+                echo 'Run Success'
+            }
+        }
+stage("This is to package the code"){
+            steps{
+                sh 'mvn package'
+                echo 'Run Success'
             }
         }
         stage("Build"){
